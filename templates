@@ -1,0 +1,32 @@
+# считывание целого числа в $t0
+
+	move $v0 $zero
+	addiu $v0 $zero 5
+	syscall
+	move $t1 $v0
+	move $v0 $zero
+
+# вывод числа из $t1
+
+	move $v0 $zero
+	addiu $v0 $zero 1
+	move $a0 $t1
+	syscall
+	move $v0 $zero
+
+# печатание строки b
+	
+	move $v0 $zero
+	addiu $v0 $zero 4
+	la $a0 b
+	syscall
+	move $v0 $zero
+
+# for (int i = $t7; i != &t6; i++)
+
+	loop:
+		addiu $t7, $t7, 1
+
+		bne $t7, $t6, loop
+		j endloop
+	endloop:
